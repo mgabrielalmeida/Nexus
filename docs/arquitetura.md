@@ -4,8 +4,8 @@
 
 **Data:** 13 de agosto de 2026
 
-**Escopo deste documento:** arquitetura e stack; nenhuma dependência deve ser
-instalada nesta etapa.
+**Escopo deste documento:** arquitetura e stack. A instalação das dependências
+foi iniciada somente depois da aprovação destas decisões.
 
 ## 1. Resumo executivo
 

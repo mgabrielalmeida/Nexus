@@ -2,9 +2,9 @@
 
 Aplicativo mobile pessoal para finanças, tarefas e hábitos.
 
-O projeto está na fase de definição. Neste momento, o repositório contém apenas
-a documentação de arquitetura: nenhuma aplicação, dependência ou ferramenta foi
-instalada.
+O projeto está no início da implementação. A stack definida na documentação já
+possui manifesto, lockfile e dependências instaladas, mas ainda não há código ou
+configuração da aplicação.
 
 ## Documentação
 
