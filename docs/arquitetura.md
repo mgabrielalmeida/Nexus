@@ -52,26 +52,26 @@ possível evolução, não parte da primeira versão.
 
 ## 4. Stack escolhida
 
-| Área | Escolha | Motivo |
-| --- | --- | --- |
-| Plataforma | React Native com Expo | Uma base para Android e iOS e menor necessidade de configuração nativa manual. |
-| Linguagem | TypeScript em modo `strict` | Detecta inconsistências cedo e documenta os formatos de dados. |
-| Navegação | Expo Router | Rotas baseadas em arquivos, abas e pilhas com uma convenção fácil de expandir. |
-| Interface | Componentes nativos do React Native, `StyleSheet` e tokens locais | Evita assumir o custo e as convenções de uma biblioteca de UI. |
-| Persistência | `expo-sqlite` | Os dados são relacionais, precisam de consultas por período e devem sobreviver a reinícios. |
-| Acesso a dados | SQL parametrizado e repositórios pequenos por funcionalidade | Evita um ORM no início sem espalhar SQL pelas telas. |
-| Estado | Estado local do React e Context apenas para estado realmente global | SQLite permanece como fonte de verdade; Redux/Zustand não são necessários inicialmente. |
-| Notificações | Notificações locais com `expo-notifications` | Lembretes funcionam sem backend ou serviço de push. |
-| Datas | APIs nativas e, quando as regras de recorrência forem implementadas, `date-fns` | Mantém as operações explícitas sem uma abstração pesada. |
-| Testes | Jest com `jest-expo` e React Native Testing Library | Caminho suportado pelo ecossistema Expo para regras e componentes. |
-| Qualidade | ESLint da configuração Expo e Prettier | Pouca configuração e estilo consistente. |
-| Gerenciador de pacotes | npm | Já acompanha o Node.js e é suficiente para um único aplicativo. |
-| Build | Expo Go no começo; development build/EAS Build quando necessário | Começa simples e permite APIs nativas que exijam um binário próprio depois. |
+| Área                   | Escolha                                                                         | Motivo                                                                                      |
+| ---------------------- | ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- |
+| Plataforma             | React Native com Expo                                                           | Uma base para Android e iOS e menor necessidade de configuração nativa manual.              |
+| Linguagem              | TypeScript em modo `strict`                                                     | Detecta inconsistências cedo e documenta os formatos de dados.                              |
+| Navegação              | Expo Router                                                                     | Rotas baseadas em arquivos, abas e pilhas com uma convenção fácil de expandir.              |
+| Interface              | Componentes nativos do React Native, `StyleSheet` e tokens locais               | Evita assumir o custo e as convenções de uma biblioteca de UI.                              |
+| Persistência           | `expo-sqlite`                                                                   | Os dados são relacionais, precisam de consultas por período e devem sobreviver a reinícios. |
+| Acesso a dados         | SQL parametrizado e repositórios pequenos por funcionalidade                    | Evita um ORM no início sem espalhar SQL pelas telas.                                        |
+| Estado                 | Estado local do React e Context apenas para estado realmente global             | SQLite permanece como fonte de verdade; Redux/Zustand não são necessários inicialmente.     |
+| Notificações           | Notificações locais com `expo-notifications`                                    | Lembretes funcionam sem backend ou serviço de push.                                         |
+| Datas                  | APIs nativas e, quando as regras de recorrência forem implementadas, `date-fns` | Mantém as operações explícitas sem uma abstração pesada.                                    |
+| Testes                 | Jest com `jest-expo` e React Native Testing Library                             | Caminho suportado pelo ecossistema Expo para regras e componentes.                          |
+| Qualidade              | ESLint da configuração Expo e Prettier                                          | Pouca configuração e estilo consistente.                                                    |
+| Gerenciador de pacotes | npm                                                                             | Já acompanha o Node.js e é suficiente para um único aplicativo.                             |
+| Build                  | Expo Go no começo; development build/EAS Build quando necessário                | Começa simples e permite APIs nativas que exijam um binário próprio depois.                 |
 
-Não será fixada uma versão do Expo antes da criação do aplicativo. Quando a
-implementação for autorizada, deve-se escolher a versão estável suportada pelo
-template oficial naquele momento, registrar essa versão no `package.json` e
-versionar o lockfile. Pacotes Expo devem ter versões compatíveis com esse SDK.
+O setup inicial adotou o Expo SDK 57, estável no momento da criação. As faixas de
+versão estão registradas no `package.json` e as versões resolvidas estão fixadas
+no lockfile. Atualizações futuras do SDK devem ser deliberadas, mantendo todos os
+pacotes Expo compatíveis com a mesma versão.
 
 ### Dependências deliberadamente adiadas
 
@@ -330,18 +330,18 @@ partes mais sensíveis depois que a persistência já está comprovada.
 
 ## 12. Registro das decisões
 
-| ID | Decisão | Estado | Consequência principal |
-| --- | --- | --- | --- |
-| DEC-001 | Expo + React Native + TypeScript | Aceita | Uma base para Android/iOS e menos configuração nativa. |
-| DEC-002 | Expo Router e três abas de primeiro nível | Aceita | Novas telas entram por convenção de arquivos; novos módulos principais exigem reavaliar espaço na barra. |
-| DEC-003 | Monólito modular por funcionalidade | Aceita | Separação suficiente sem monorepo ou camadas cerimoniais. |
-| DEC-004 | Local-first, sem backend | Aceita | Funciona offline e reduz operação; não há sincronização nem recuperação remota. |
-| DEC-005 | SQLite como fonte de verdade | Aceita | Consultas relacionais e por período; exige migrações e backup. |
-| DEC-006 | SQL parametrizado sem ORM inicialmente | Aceita | Menos ferramentas; os repositórios devem impedir SQL espalhado pela UI. |
-| DEC-007 | Estado local do React, sem store global externa | Aceita | Menos conceitos e nenhuma duplicação permanente do banco em memória. |
-| DEC-008 | Notificações locais, sem push remoto | Aceita | Lembretes independem de servidor, mas seguem limitações do sistema operacional. |
-| DEC-009 | Valores monetários em unidades inteiras | Aceita | Elimina erros de arredondamento de ponto flutuante. |
-| DEC-010 | Sem criptografia do banco na primeira etapa | Aceita com ressalva | Mantém Expo Go e setup simples; requer transparência, backup e futura revisão de risco. |
+| ID      | Decisão                                         | Estado              | Consequência principal                                                                                   |
+| ------- | ----------------------------------------------- | ------------------- | -------------------------------------------------------------------------------------------------------- |
+| DEC-001 | Expo + React Native + TypeScript                | Aceita              | Uma base para Android/iOS e menos configuração nativa.                                                   |
+| DEC-002 | Expo Router e três abas de primeiro nível       | Aceita              | Novas telas entram por convenção de arquivos; novos módulos principais exigem reavaliar espaço na barra. |
+| DEC-003 | Monólito modular por funcionalidade             | Aceita              | Separação suficiente sem monorepo ou camadas cerimoniais.                                                |
+| DEC-004 | Local-first, sem backend                        | Aceita              | Funciona offline e reduz operação; não há sincronização nem recuperação remota.                          |
+| DEC-005 | SQLite como fonte de verdade                    | Aceita              | Consultas relacionais e por período; exige migrações e backup.                                           |
+| DEC-006 | SQL parametrizado sem ORM inicialmente          | Aceita              | Menos ferramentas; os repositórios devem impedir SQL espalhado pela UI.                                  |
+| DEC-007 | Estado local do React, sem store global externa | Aceita              | Menos conceitos e nenhuma duplicação permanente do banco em memória.                                     |
+| DEC-008 | Notificações locais, sem push remoto            | Aceita              | Lembretes independem de servidor, mas seguem limitações do sistema operacional.                          |
+| DEC-009 | Valores monetários em unidades inteiras         | Aceita              | Elimina erros de arredondamento de ponto flutuante.                                                      |
+| DEC-010 | Sem criptografia do banco na primeira etapa     | Aceita com ressalva | Mantém Expo Go e setup simples; requer transparência, backup e futura revisão de risco.                  |
 
 Uma decisão deve ser revisada quando surgir um requisito que invalide sua razão,
 não apenas porque existe uma alternativa mais sofisticada.

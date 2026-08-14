@@ -1,0 +1,19 @@
+{
+  "expo": {
+    "name": "Nexus",
+    "slug": "nexus",
+    "version": "0.1.0",
+    "scheme": "nexus",
+    "platforms": ["android", "ios"],
+    "userInterfaceStyle": "automatic",
+    "plugins": [
+      "expo-router",
+      "expo-notifications",
+      "expo-sqlite",
+      "expo-status-bar"
+    ],
+    "experiments": {
+      "typedRoutes": true
+    }
+  }
+}

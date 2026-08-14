@@ -1,1 +1,26 @@
 node_modules/
+
+# Expo
+.expo/
+dist/
+web-build/
+expo-env.d.ts
+
+# Generated native projects
+/android/
+/ios/
+
+# Tests and TypeScript
+coverage/
+*.tsbuildinfo
+
+# Logs
+*.log
+npm-debug.log*
+
+# Local environment files
+.env*.local
+
+# Operating system files
+.DS_Store
+Thumbs.db
