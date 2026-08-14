@@ -2,9 +2,10 @@
 
 Aplicativo mobile pessoal para finanças, tarefas e hábitos.
 
-O setup inicial está concluído: dependências, configurações, scripts, navegação
-mínima e estrutura de pastas estão preparados. As funcionalidades do aplicativo
-ainda não começaram a ser desenvolvidas.
+O setup inicial e a base visual mínima estão concluídos: dependências,
+configurações, scripts, navegação, temas claro/escuro e componentes fundamentais
+estão preparados. As funcionalidades do aplicativo ainda não começaram a ser
+desenvolvidas.
 
 ## Documentação
 
@@ -36,7 +37,7 @@ npm run format:check
 - `src/features`: módulos de Finanças, Tarefas e Hábitos;
 - `src/db`: acesso ao SQLite e futuras migrações;
 - `src/platform`: integrações com APIs nativas;
-- `src/shared`: componentes e utilitários realmente compartilhados.
+- `src/shared`: componentes, tema e utilitários realmente compartilhados.
 
-As rotas atuais são apenas uma casca de navegação e não contêm interface ou
-regras de negócio.
+As rotas atuais exibem apenas placeholders para validar a navegação e os estilos;
+não contêm regras de negócio.
